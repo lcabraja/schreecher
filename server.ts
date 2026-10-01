@@ -13,4 +13,4 @@ const server = Bun.serve({
     return await file.exists() ? new Response(file) : new Response("Not found", { status: 404 });
   },
 });
-console.log(`Chirp Share static preview at http://127.0.0.1:${server.port}`);
+console.log(`Screecher static preview at http://127.0.0.1:${server.port}`);

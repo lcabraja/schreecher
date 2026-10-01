@@ -1,4 +1,6 @@
-# Chirp Share
+# Screecher
+
+[Open Screecher](https://lcabraja.github.io/schreecher/)
 
 Share an entire URL between nearby devices through audible chirps. Everything runs in the browser with [ggwave](https://github.com/ggerganov/ggwave). There is no link lookup server, database, or expiry.
 
@@ -19,3 +21,10 @@ bun run build
 Publish `dist/` on any static HTTPS host. The build uses relative paths, so it also works under a GitHub Pages repository path. HTTPS is required for microphone access, except on localhost. Once the page and audio engine have loaded, sending and receiving make no network requests.
 
 `bun run start` serves the build on `127.0.0.1:4386` for the existing Tailscale preview. It provides no backend API.
+
+## GitHub Pages
+
+The repository is `lcabraja/schreecher`. The application name is Screecher.
+Pushing to `main` runs the Pages workflow, checks the code, tests the audio transport, builds the static site, and deploys `dist/`. Configure the repository's Pages source as GitHub Actions.
+
+The built site includes the ggwave MIT license in `THIRD_PARTY_NOTICES.txt`.

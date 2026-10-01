@@ -34,6 +34,19 @@ describe("URLs carried entirely over sound", () => {
     expect(() => createPackets("javascript:alert(1)")).toThrow();
     expect(() => createPackets("https://name:password@example.com")).toThrow();
   });
+  test("packet and URL limits keep the full URL intact", () => {
+    const prefix = "https://example.com/";
+    expect(createPackets(prefix + "x".repeat(140 - prefix.length))).toHaveLength(1);
+    const url = prefix + "x".repeat(2048 - prefix.length);
+    const receiver = new UrlReceiver();
+    let result;
+    for (const packet of createPackets(url)) {
+      expect(new TextEncoder().encode(packet).length).toBeLessThanOrEqual(MAX_PACKET_BYTES);
+      result = receiver.accept(packet);
+    }
+    expect(result).toEqual({ kind: "complete", url });
+    expect(() => createPackets(url + "x")).toThrow("2048");
+  });
   test("missing packets cannot open a partial URL and corrupted content fails its checksum", () => {
     const packets = createPackets("https://example.com/" + "x".repeat(250), "abcdef03");
     const receiver = new UrlReceiver();
@@ -48,7 +61,7 @@ describe("URLs carried entirely over sound", () => {
     const tx = g.init({ ...g.getDefaultParameters(), operatingMode: g.GGWAVE_OPERATING_MODE_TX });
     const rx = g.init({ ...g.getDefaultParameters(), operatingMode: g.GGWAVE_OPERATING_MODE_RX });
     try {
-      for (const url of ["https://example.com/?q=sound#hello", "https://example.com/?q=" + "abc".repeat(55)]) {
+      for (const url of ["https://example.com/?q=sound#hello", "https://example.com/" + "x".repeat(121), "https://example.com/?q=" + "abc".repeat(55)]) {
         const receiver = new UrlReceiver();
         let result;
         for (const packet of createPackets(url)) {

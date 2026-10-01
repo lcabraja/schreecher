@@ -1,20 +1,13 @@
 import ggwaveFactory from "ggwave";
 import "./style.css";
+import { view } from "./view";
 import { createPackets, UrlReceiver, validateUrl } from "./transfer";
 
 type GGWave = Awaited<ReturnType<typeof ggwaveFactory>>;
 
 
 const app = document.querySelector<HTMLDivElement>("#app")!;
-app.innerHTML = `
-  <main class="shell">
-    <header class="topbar"><a class="brand" href="./" aria-label="Chirp Share home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>chirp<span class="brand-light">share</span></span></a><span class="top-note">NEARBY LINK EXCHANGE</span></header>
-    <section class="intro"><div class="ambient ambient-one"></div><div class="ambient ambient-two"></div><div class="hero-copy"><h1>Pass a link<br><em>through the air.</em></h1><p>Two devices. One little sound. Choose what this device does.</p></div><div class="hero-art" aria-hidden="true"><span class="art-ring ring-one"></span><span class="art-ring ring-two"></span><span class="art-ring ring-three"></span><span class="art-core"><svg viewBox="0 0 80 80" fill="none"><path d="M18 45h10l8-19 10 29 7-15h9" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></section>
-    <section class="workspace"><div class="mode-label">THIS DEVICE</div><div class="mode-switch" role="tablist" aria-label="Device mode"><button id="transmit-tab" class="mode active" role="tab" aria-selected="true" aria-controls="transmit-panel"><span class="mode-icon">↗</span> Transmit</button><button id="receive-tab" class="mode" role="tab" aria-selected="false" aria-controls="receive-panel"><span class="mode-icon">↙</span> Receive</button></div>
-      <div id="transmit-panel" class="panel" role="tabpanel" aria-labelledby="transmit-tab"><div class="panel-heading"><div class="step">01 / SEND</div><h2>Send a link</h2></div><form id="send-form"><label for="url">LINK TO SHARE</label><div class="input-wrap"><span class="input-icon">↗</span><input id="url" name="url" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="https://example.com/something-good" required /></div><p class="hint">Keep the devices close. Turn up the sender's volume.</p><button id="share" class="primary" type="submit"><span id="share-label">Share with a chirp</span><span class="button-arrow">↗</span></button><button id="cancel" type="button" class="cancel hidden">Stop chirping</button><p id="packet-info" class="hint"></p></form><div id="send-status" class="status" role="status" aria-live="polite">Ready when you are.</div><div class="wave-visual" aria-hidden="true"></div></div>
-      <div id="receive-panel" class="panel hidden" role="tabpanel" aria-labelledby="receive-tab"><div class="panel-heading"><div class="step">02 / LISTEN</div><h2>Catch a link</h2></div><p class="receive-copy">Allow microphone access, then keep this page open while nearby devices chirp.</p><button id="listen" class="primary" type="button"><span id="listen-label">Start listening</span><span class="button-arrow">◎</span></button><div id="receive-status" class="status" role="status" aria-live="polite">Microphone is off.</div><div class="inbox-heading"><span>RECEIVED LINKS</span><span id="count">00</span></div><div id="inbox" class="inbox"><div class="empty"><span class="empty-icon">◎</span><p>Nothing here yet.<br>Waiting for the first chirp.</p></div></div></div>
-    </section><footer><span>Made for nearby sharing</span><span>The entire link travels through sound · no backend</span></footer>
-  </main>`;
+app.innerHTML = view;
 
 
 const $ = <T extends HTMLElement>(selector: string) => document.querySelector<T>(selector)!;
