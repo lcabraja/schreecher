@@ -18,6 +18,8 @@ bun install --frozen-lockfile
 bun run dev
 ```
 
+`package-lock.json` is included for Raycast's CI manifest validation; Bun remains the install and run tool.
+
 The development command compiles a Swift microphone helper, bundles the commands, and installs them into Raycast. After the first successful build, stopping the development watcher keeps the installed commands available. Run it again to install source changes.
 
 ## Audio companion
