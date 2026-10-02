@@ -1,0 +1,27 @@
+name: Check Raycast extension
+on:
+  push:
+    branches: [main]
+    paths: ['raycast/**', 'src/transfer.ts', 'src/ggwave.d.ts', '.github/workflows/raycast.yml']
+  pull_request:
+    paths: ['raycast/**', 'src/transfer.ts', 'src/ggwave.d.ts', '.github/workflows/raycast.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  raycast:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+      - run: bun install --frozen-lockfile
+        working-directory: raycast
+      - run: bun run check
+        working-directory: raycast
+      - run: bun run lint
+        working-directory: raycast
+      - run: bun run build
+        working-directory: raycast
+      - run: bun test raycast/tests

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "screecher",
+  "title": "Screecher",
+  "description": "Send and receive complete links through nearby audio chirps.",
+  "icon": "extension-icon.png",
+  "author": "lcabraja",
+  "platforms": [
+    "macOS"
+  ],
+  "categories": [
+    "Productivity"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "send",
+      "title": "Send Link",
+      "description": "Chirp a complete URL to a nearby device.",
+      "mode": "view"
+    },
+    {
+      "name": "receive",
+      "title": "Receive Links",
+      "description": "Listen continuously for links from nearby devices.",
+      "mode": "view"
+    }
+  ],
+  "scripts": {
+    "helper": "sh scripts/build-helper.sh",
+    "build": "bun run helper && ray build -e dist",
+    "dev": "bun run helper && ray develop",
+    "check": "tsc --noEmit",
+    "lint": "ray lint",
+    "cli": "bun scripts/cli.ts",
+    "companion:start": "bun scripts/start.ts",
+    "companion:stop": "bun scripts/stop.ts"
+  },
+  "dependencies": {
+    "@raycast/api": "^1.104.18",
+    "ggwave": "^0.4.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^2.0.4",
+    "@types/node": "^22.19.17",
+    "@types/react": "^19.0.10",
+    "eslint": "^9.22.0",
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.2"
+  }
+}

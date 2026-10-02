@@ -28,3 +28,7 @@ The repository is `lcabraja/schreecher`. The application name is Screecher.
 Pushing to `main` runs the Pages workflow, checks the code, tests the audio transport, builds the static site, and deploys `dist/`. Configure the repository's Pages source as GitHub Actions.
 
 The built site includes the ggwave MIT license in `THIRD_PARTY_NOTICES.txt`.
+
+## Raycast
+
+The [Raycast extension](raycast/README.md) adds Send Link and Receive Links commands on macOS. It uses the same complete-URL protocol as this website. A local audio companion supplies microphone input when direct capture from Raycast is unavailable. See its README for installation and companion start/stop commands.
