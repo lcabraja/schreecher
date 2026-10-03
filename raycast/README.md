@@ -1,6 +1,8 @@
 # Screecher for Raycast
 
-Search Raycast for **Screecher**, then open **Send Link** or **Receive Links**.
+Search Raycast for **Screecher**, then choose **Send Link**, **Receive Links**, or **Copy Web Link**.
+
+Copy Web Link copies `https://lcabraja.github.io/schreecher/` so you can send the website to another device. Both audio commands also include **Copy Screecher Web Link** in their Command-K action panel.
 
 Send Link loads a valid URL from the clipboard when it opens. Paste another URL or use Load Link from Clipboard, then press Command-Return to share. The form stays open for repeated shares. Press Command-Return again while sending to stop. Keep the receiving device nearby with Screecher listening and turn up the sender's volume.
 

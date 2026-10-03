@@ -1,5 +1,9 @@
 # Changelog
 
+## Copy website link · 2026-10-03
+
+- Copy the Screecher website URL directly from Raycast search or either audio command’s action panel.
+
 ## Initial release · 2026-10-02
 
 - Send complete URLs repeatedly from Raycast, with clipboard loading and cancellation.

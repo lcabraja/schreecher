@@ -10,6 +10,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { createPackets, validateUrl } from "../../src/transfer";
 import { transmit } from "./audio";
+import CopyWebLinkAction from "./copy-web-link-action";
 
 export default function Send() {
   const [url, setUrl] = useState("");
@@ -120,6 +121,7 @@ export default function Send() {
               }
             }}
           />
+          <CopyWebLinkAction />
         </ActionPanel>
       }
     >

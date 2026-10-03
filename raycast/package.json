@@ -24,6 +24,12 @@
       "title": "Receive Links",
       "description": "Listen continuously for links from nearby devices.",
       "mode": "view"
+    },
+    {
+      "name": "copy-web-link",
+      "title": "Copy Web Link",
+      "description": "Copy the Screecher website URL to share with another device.",
+      "mode": "no-view"
     }
   ],
   "scripts": {

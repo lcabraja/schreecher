@@ -9,6 +9,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { randomUUID } from "node:crypto";
 import { listenViaCompanion } from "./companion";
+import CopyWebLinkAction from "./copy-web-link-action";
 
 type Link = { id: string; url: string; at: Date };
 export default function Receive() {
@@ -84,14 +85,24 @@ export default function Receive() {
       searchBarPlaceholder="Search received links"
       isLoading={active}
       isShowingDetail={links.length > 0}
-      actions={<ActionPanel>{toggle}</ActionPanel>}
+      actions={
+        <ActionPanel>
+          {toggle}
+          <CopyWebLinkAction />
+        </ActionPanel>
+      }
     >
       {links.length === 0 ? (
         <List.EmptyView
           icon={Icon.Microphone}
           title={active ? "Listening for chirps" : "Catch a link through sound"}
           description={`${status}\nKeep this command open and the sender nearby. Nothing opens automatically.`}
-          actions={<ActionPanel>{toggle}</ActionPanel>}
+          actions={
+            <ActionPanel>
+              {toggle}
+              <CopyWebLinkAction />
+            </ActionPanel>
+          }
         />
       ) : (
         <List.Section title={status}>
@@ -127,6 +138,7 @@ export default function Receive() {
                     content={link.url}
                   />
                   {toggle}
+                  <CopyWebLinkAction />
                 </ActionPanel>
               }
             />

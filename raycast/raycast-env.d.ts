@@ -17,6 +17,8 @@ declare namespace Preferences {
   export type Send = ExtensionPreferences & {}
   /** Preferences accessible in the `receive` command */
   export type Receive = ExtensionPreferences & {}
+  /** Preferences accessible in the `copy-web-link` command */
+  export type CopyWebLink = ExtensionPreferences & {}
 }
 
 declare namespace Arguments {
@@ -24,5 +26,7 @@ declare namespace Arguments {
   export type Send = {}
   /** Arguments passed to the `receive` command */
   export type Receive = {}
+  /** Arguments passed to the `copy-web-link` command */
+  export type CopyWebLink = {}
 }
 
